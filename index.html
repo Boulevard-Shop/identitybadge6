@@ -6,7 +6,7 @@
   <title>Identity Badge</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Libre Baskerville for exact "Identity Badge" serif + Cinzel/Montserrat for EMAAR MISR + Inter -->
+  <!-- Google Fonts: Libre Baskerville (serif title), Cinzel (EMAAR MISR brand), Inter (UI text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
@@ -27,30 +27,31 @@
 
   <style>
     body {
-      background-color: #f2f2f4;
+      background-color: #f0f0ef;
       -webkit-tap-highlight-color: transparent;
       user-select: none;
     }
 
-    /* Subtle paper-white canvas matching the reference screenshot */
+    /* Clean off-white paper canvas matching the reference screenshot */
     .badge-bg {
-      background-color: #fbfbfa;
-    }
-
-    /* Exact subtle press & active lightening transition for Open Gate button */
+    /* Darker charcoal grey Open Gate button (#5a5b5d) with subtle tactile press & countdown transitions */
     .gate-btn {
-      background-color: #848789;
+      background-color: #5a5b5d;
       transition: background-color 0.25s ease, transform 0.12s ease, box-shadow 0.25s ease;
     }
 
+    .gate-btn:hover {
+      background-color: #737578;
+    }
+
     .gate-btn:active {
-      background-color: #9ba0a3;
+      background-color: #737578;
       transform: scale(0.988);
     }
 
     .gate-btn.is-counting {
-      background-color: #9ba0a3;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+      background-color: #737578;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
     }
 
     .gate-btn.is-opened {
@@ -60,59 +61,63 @@
 </head>
 <body class="flex items-center justify-center min-h-screen text-[#181818] antialiased p-0 sm:p-4">
 
-  <!-- Mobile Container Wrapper (1:1 proportions with reference image) -->
-  <div class="w-full max-w-[400px] badge-bg min-h-[844px] sm:rounded-[44px] shadow-2xl flex flex-col justify-between overflow-hidden relative border border-gray-200/70 px-5 pt-[74px] pb-11">
+  <!-- Mobile Container Wrapper (400px frame with 18px horizontal padding -> 364px inner width) -->
+  <div class="w-full max-w-[400px] badge-bg min-h-[844px] sm:rounded-[44px] shadow-2xl flex flex-col items-center justify-start overflow-hidden relative border border-gray-200/70 px-[18px] pt-[62px] pb-10">
 
-    <!-- Top Block: Title + Overlapping Avatar + Details Card -->
+    <!-- Top Block: Title + Overlapping Avatar + 3 Stacked Card Boxes -->
     <div class="w-full flex flex-col items-center">
 
-      <!-- Exact Serif Title & Spacing from Circle -->
-      <h1 class="font-title font-bold text-[24px] text-[#1c1c1e] tracking-[-0.015em] leading-none text-center mb-[26px]">
+      <!-- Exact Serif Title ("Identity Badge" with capital I) -->
+      <h1 class="font-title font-bold text-[24px] text-[#1c1c1e] tracking-[-0.015em] leading-none text-center mb-[28px]">
         Identity Badge
       </h1>
 
-      <!-- Unified Card Stack -->
+      <!-- Unified Card Stack (364px total width) -->
       <div class="w-full relative flex flex-col items-center">
 
-        <!-- Circular Profile Image with Direct #86d376 Green Ring -->
-        <div class="relative z-10 w-[256px] h-[256px] rounded-full border-[5.5px] border-[#86d376] overflow-hidden bg-[#1e1e1e] shadow-xs -mb-[122px]">
+        <!-- Circular Profile Image (274px diameter, 5.5px #6be062 border, overlaps 114px into the 122px top grey box) -->
+        <div class="relative z-10 w-[274px] h-[274px] rounded-full border-[5.5px] border-[#6be062] overflow-hidden bg-[#1e1e1e] -mb-[114px]">
           <img 
             src="https://instasize.com/api/image/87b86595e7cab8b705bc41ccda4caee97eebce847446d569df2a37d97308b5c2.jpeg"
             alt="Yousef Walid" 
             class="w-full h-full object-cover object-center"
+            onerror="this.src='https://placehold.co/274x274/1e1e1e/ffffff?text=YW'"
           />
         </div>
 
-        <!-- Details Card Container -->
-        <div class="w-full bg-[#e9eaee] rounded-[20px] pt-[146px] overflow-hidden">
+        <!-- 3 Middle Stacked Card Sections (exact 364px width matching Open Gate button) -->
+        <div class="w-full rounded-[20px] overflow-hidden flex flex-col">
+
+          <!-- Box 1: Top light-grey backing behind lower half of circular photo (122px tall, leaves 8px gap below green ring) -->
+          <div class="w-full h-[122px] bg-[#eceef2] rounded-t-[20px]"></div>
           
-          <!-- Lighter Green Username & Type Strip -->
-          <div class="bg-[#a9df9c] px-5 py-[11px] flex justify-between items-center w-full">
+          <!-- Box 2: Middle light-green Username & Type strip (68px tall) -->
+          <div class="w-full h-[68px] bg-[#a9e4a3] px-[22px] py-[13px] flex justify-between items-center">
             <div class="flex flex-col">
-              <span class="text-[12.5px] text-[#3a5235] font-normal leading-tight">Username</span>
-              <span class="text-[17px] font-semibold text-[#111111] leading-snug tracking-[-0.01em] mt-[1px]">Yousef Walid</span>
+              <span class="text-[13.5px] text-[#3a5538] font-normal leading-tight">Username</span>
+              <span class="text-[17.5px] font-semibold text-[#141414] leading-snug tracking-[-0.01em] mt-[2px]">Yousef Walid</span>
             </div>
             <div class="flex flex-col items-end">
-              <span class="text-[12.5px] text-[#3a5235] font-normal leading-tight">Type</span>
-              <span class="text-[17px] font-semibold text-[#111111] leading-snug tracking-[-0.01em] mt-[1px]">Resident</span>
+              <span class="text-[13.5px] text-[#3a5538] font-normal leading-tight">Type</span>
+              <span class="text-[17.5px] font-semibold text-[#141414] leading-snug tracking-[-0.01em] mt-[2px]">Resident</span>
             </div>
           </div>
 
-          <!-- Unit & QR Code Area -->
-          <div class="px-5 py-[15px] bg-[#e9eaee] flex justify-between items-center">
+          <!-- Box 3: Bottom light-grey Unit & Circular Seal Section (86px tall) -->
+          <div class="w-full h-[86px] bg-[#eceef2] rounded-b-[20px] px-[22px] py-[18px] flex justify-between items-center">
             <div class="flex flex-col pr-2">
-              <span class="text-[12.5px] text-[#6d7075] font-normal leading-tight">Unit</span>
-              <span class="text-[16.5px] font-semibold text-[#111111] leading-snug tracking-[-0.01em] mt-[2px]">Boulevard Residence 2-C-3-3</span>
+              <span class="text-[13.5px] text-[#5f6368] font-normal leading-tight">Unit</span>
+              <span class="text-[17.5px] font-semibold text-[#141414] leading-snug tracking-[-0.01em] mt-[2px]">Boulevard Residence 2-C-3-3</span>
             </div>
             
-            <!-- Circular QR Code Button matching reference -->
+            <!-- 42px x 42px Circular Seal Emblem Button (opens Resident Access QR) -->
             <button 
               onclick="toggleQRModal()" 
-              aria-label="Show QR Code"
-              class="w-[38px] h-[38px] rounded-full bg-[#e2e3e8] border border-[#d0d2d8] flex items-center justify-center active:scale-95 transition-transform cursor-pointer shrink-0">
-              <svg class="w-[19px] h-[19px] text-[#45474b]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 3h7v7H3V3zm2 2v3h3V5H5zm9-2h7v7h-7V3zm2 2v3h3V5h-3zM3 14h7v7H3v-7zm2 2v3h3v-3H5zm11-2h2v2h-2v-2zm-2 2h2v2h-2v-2zm4 0h3v2h-3v-2zm-4 3h2v2h-2v-2zm3 0h4v2h-4v-2zm-3-5h2v2h-2v-2z"/>
-              </svg>
+              aria-label="Show Resident Access QR Code"
+              title="Tap to view Resident Access QR"
+              class="w-[42px] h-[42px] rounded-full bg-[#f4f5f7] border border-[#dcdde2] flex flex-col items-center justify-center gap-[2.5px] active:scale-95 transition-transform cursor-pointer shrink-0">
+              <span class="w-[19px] h-[1.5px] bg-[#6c6e73] rounded-full block"></span>
+              <span class="w-[15px] h-[1.5px] bg-[#6c6e73] rounded-full block"></span>
             </button>
           </div>
 
@@ -120,39 +125,44 @@
 
       </div>
 
-      <!-- Open Gate Button (Medium Grey #848789, lightens on press & during countdown) -->
+      <!-- Open Gate Button (exact same 364px width as the 3-box card, 50px height, 22px below Box 3) -->
       <button 
         id="openGateBtn"
         onclick="startInButtonCountdown()" 
-        class="gate-btn w-full text-white font-normal text-[16.5px] tracking-[-0.005em] h-[46px] rounded-[11px] mt-[22px] cursor-pointer flex items-center justify-center">
+        class="gate-btn w-full text-white font-normal text-[16.5px] tracking-[-0.005em] h-[50px] rounded-[12px] mt-[22px] cursor-pointer flex items-center justify-center">
         <span id="btnText">Open Gate</span>
       </button>
 
-      <!-- Fine Warning Text -->
-      <p class="text-[13px] text-center text-[#1e1e1e] font-normal px-2 mt-[18px] leading-[1.35]">
+      <!-- Fine Warning Text (18px below Open Gate button) -->
+      <p class="text-[13.5px] text-center text-[#3a3a3c] font-normal px-2 mt-[18px] leading-[1.35]">
         Any proven manipulation of this identity will result in a<br>
         EGP 30,000 fine and user suspension.
       </p>
 
+      <!-- Footer EMAAR MISR Logo (44px below fine warning text) -->
+      <div class="text-center flex flex-col items-center mt-[44px]">
+        <span class="font-brand text-[26px] font-normal tracking-[0.12em] text-[#383838] leading-none uppercase">EMAAR</span>
+        <span class="font-sans text-[10px] tracking-[0.28em] text-[#5a5a5a] font-medium mt-[3px] uppercase pl-[0.28em]">MISR</span>
+      </div>
+
     </div>
 
-    <!-- Footer Branding Logo -->
-    <div class="text-center flex flex-col items-center mt-8">
-      <span class="font-brand text-[25px] font-normal tracking-[0.14em] text-[#2b2b2b] leading-none uppercase">EMAAR</span>
-      <span class="font-sans text-[10px] tracking-[0.28em] text-[#4b4b4b] font-medium mt-[3px] uppercase pl-[0.28em]">MISR</span>
-    </div>
-
-    <!-- QR Code Modal -->
-    <div id="qrModal" class="hidden absolute inset-0 bg-black/40 z-50 flex items-center justify-center p-6 backdrop-blur-xs">
+    <!-- Resident Access QR Code Modal -->
+    <div id="qrModal" onclick="handleBackdropClick(event)" class="hidden absolute inset-0 bg-black/40 z-50 flex items-center justify-center p-6 backdrop-blur-xs">
       <div class="w-[280px] bg-white rounded-[22px] p-6 shadow-2xl flex flex-col items-center text-center border border-gray-100">
         <h3 class="text-[18px] font-semibold text-black mb-1">Resident Access QR</h3>
         <p class="text-[12px] text-gray-500 mb-4">Scan at gate scanner for entry</p>
 
         <div class="p-3 bg-white rounded-2xl shadow-xs mb-4 border border-gray-100">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=EMAAR_BOULEVARD_2C33_YOUSEF_WALID" alt="QR Code" class="w-44 h-44 object-contain">
+          <img 
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=EMAAR_BOULEVARD_2C33_YOUSEF_WALID" 
+            alt="Resident QR Code" 
+            class="w-44 h-44 object-contain"
+            onerror="this.src='https://placehold.co/180x180/ffffff/111111?text=QR+CODE'"
+          >
         </div>
 
-        <button onclick="toggleQRModal()" class="w-full bg-[#848789] active:bg-[#9ba0a3] text-white font-medium py-2.5 rounded-xl text-[15px] transition-colors cursor-pointer">
+        <button onclick="toggleQRModal()" class="w-full bg-[#5a5b5d] active:bg-[#737578] text-white font-medium py-2.5 rounded-xl text-[15px] transition-colors cursor-pointer">
           Done
         </button>
       </div>
@@ -164,6 +174,10 @@
     let isCountingDown = false;
     let countdownTimer = null;
 
+    /**
+     * Triggers a 5-second countdown inside the Open Gate button,
+     * displays "Gate Opened!" upon completion, and resets cleanly.
+     */
     function startInButtonCountdown() {
       if (isCountingDown) return;
       isCountingDown = true;
@@ -195,9 +209,23 @@
       }, 1000);
     }
 
+    /**
+     * Toggles visibility of the Resident Access QR modal.
+     */
     function toggleQRModal() {
       const qrModal = document.getElementById('qrModal');
-      if (qrModal) qrModal.classList.toggle('hidden');
+      if (qrModal) {
+        qrModal.classList.toggle('hidden');
+      }
+    }
+
+    /**
+     * Closes the QR modal when tapping outside the modal card.
+     */
+    function handleBackdropClick(event) {
+      if (event.target && event.target.id === 'qrModal') {
+        toggleQRModal();
+      }
     }
   </script>
 </body>
